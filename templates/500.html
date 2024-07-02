@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %} 404 {% endblock %}
+
+{% block style %}
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/404.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+    
+    
+    <section class="error-part">
+      <div class="container">
+        <div class="error">
+          <h1>404</h1><h2>خطای سرور!</h2><a href="{% url 'items:home_page' %}" class="btn btn-outline"><i class="fas fa-home"></i><span>برو صفحه اصلی</span></a>
+        </div>
+      </div>
+    </section>
+        
+    
+    
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/custom/main.js' %}"></script>
+{% endblock %}

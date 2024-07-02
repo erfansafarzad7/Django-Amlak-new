@@ -1,0 +1,404 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %} Item List {% endblock %}
+
+{% block style %} 
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/category-details.css' %}">
+{% endblock %}
+
+
+{% block content %}
+    
+
+
+    
+{% if items.count >= 1 %}
+    
+    <section class="single-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="single-content">
+              <h2>جزئیات رده تبلیغات</h2><ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">صفحه اصلی</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a href="category-list.html">لیست دسته ها</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">جزئیات دسته</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+
+    
+    
+    <section class="ad-list-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="product-filter">
+              <div class="product-page-number">
+                <p> نمایش 1-0 از {{ items.count }}  نتیجه </p>
+              </div>
+                
+{#              <select class="product-short-select custom-select">#}
+{#                <option selected>مرتب سازی بر اساس فروش برتر</option>#}
+{#                <option value="1">مرتب سازی بر اساس آیتم جدید</option>#}
+{#                <option value="2">مرتب سازی بر اساس محبوبت</option>#}
+{#                <option value="3">مرتب سازی بر اساس نظرات خوب</option>#}
+{#              </select>#}
+                
+              <ul class="product-card-type">
+                <li class="grid-verti active">
+                  <i class="fas fa-grip-vertical"></i>
+                </li>
+                <li class="grid-hori">
+                  <i class="fas fa-grip-horizontal"></i>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row content-reverse">
+          <div class="col-lg-3">
+            <div class="row">
+            
+          <form>
+          
+                    
+{#              <div class="col-md-6 col-lg-12">#}
+{#                <div class="product-sidebar">#}
+{#                  <div class="product-sidebar-title">#}
+{#                    <h6>ترتیب</h6>#}
+{#                  </div>#}
+{#                  <div class="product-sidebar-content">#}
+{#                      #}
+{#              <select class="product-short-select custom-select">#}
+{#                <option selected>مرتب سازی بر اساس فروش برتر</option>#}
+{#                <option value="1">مرتب سازی بر اساس آیتم جدید</option>#}
+{#                <option value="2">مرتب سازی بر اساس محبوبت</option>#}
+{#                <option value="3">مرتب سازی بر اساس نظرات خوب</option>#}
+{#              </select>#}
+{#                      #}
+{#                      <button type="submit" class="product-filter-btn"><i class="fas fa-broom"></i><span>فیلتر</span></button>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+            
+            
+          
+          
+              <div class="col-md-6 col-lg-12">
+                <div class="product-sidebar">
+                  <div class="product-sidebar-title">
+                    <h6>فیلتر بر اساس قیمت </h6>
+                  </div>
+                  <div class="product-sidebar-content">
+                    <div class="product-sidebar-search">
+                      <input name="min_price" type="text" placeholder="از" {% if min_price %} value="{{ min_price }}{% endif %}"/>
+                      <input name="max_price" type="text" placeholder="تا" {% if max_price %} value="{{ max_price }}{% endif %}"/>
+                    </div>
+                    <button type="submit" class="product-filter-btn"><i class="fas fa-broom"></i><span>فیلتر</span></button>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="col-md-6 col-lg-12">
+                <div class="product-sidebar">
+                  <div class="product-sidebar-title">
+                    <h6>فیلتر بر اساس متراژ </h6>
+                  </div>
+                  <div class="product-sidebar-content">
+                    <div class="product-sidebar-search">
+                      <input name="min_area" type="text" placeholder="از" {% if min_area %} value="{{ min_area }}{% endif %}"/>
+                      <input name="max_area" type="text" placeholder="تا" {% if max_area %} value="{{ max_area }}{% endif %}"/>
+                    </div>
+                    <button type="submit" class="product-filter-btn"><i class="fas fa-broom"></i><span>فیلتر</span></button>
+                  </div>
+                </div>
+              </div>
+            
+              <div class="col-md-6 col-lg-12">
+                <div class="product-sidebar">
+                  <div class="product-sidebar-title">
+                    <h6>فیلتر بر اساس نوع</h6>
+                  </div>
+                  <div class="product-sidebar-content">
+                    <ul class="product-sidebar-list">
+                        {% for t in types %}
+                      <li>
+                        <input value="{{ t.key }}" name="type" type="checkbox" id="typ1" {% if t.key in filtered_types %} checked {% endif %} /><label for="typ1">{{ t.key }}</label>
+                      </li>
+                        {% endfor %}
+                    </ul><button type="submit" class="product-filter-btn"><i class="fas fa-broom"></i><span>فیلتر</span></button>
+                  </div>
+                </div>
+              </div>
+            
+
+              <div class="col-md-6 col-lg-12">
+                <div class="product-sidebar">
+                  <div class="product-sidebar-title">
+                    <h6>فیلتر بر اساس دسته بندی</h6>
+                  </div>
+                  <div class="product-sidebar-content">
+                    <ul class="product-sidebar-list">
+                        {% for c in categories %}
+                      <li>
+                        <input value="{{ c.key }}" name="category" type="checkbox" id="typ1" {% if c.key in filtered_categories %} checked {% endif %} /><label for="typ1">{{ c.key }}</label>
+                      </li>
+                        {% endfor %}
+                    </ul><button type="submit" class="product-filter-btn"><i class="fas fa-broom"></i><span>فیلتر</span></button>
+                  </div>
+                </div>
+              </div>
+          </form>
+            
+            
+            
+            
+{#              <div class="col-md-6 col-lg-12">#}
+{#                <div class="product-sidebar">#}
+{#                  <div class="product-sidebar-title">#}
+{#                    <h6>فیلتر بر اساس شهر</h6>#}
+{#                  </div>#}
+{#                  <div class="product-sidebar-content">#}
+{#                    <div class="product-sidebar-search">#}
+{#                      <input type="text" placeholder="جستجو" />#}
+{#                    </div>#}
+{#                    <ul class="product-sidebar-list widget">#}
+{#                      <li>#}
+{#                        <input type="checkbox" id="cit1" /><label for="cit1"><span>لس آنجلس</span><span>(15)</span></label>#}
+{#                      </li>#}
+{#                    </ul><button class="product-filter-btn"><i class="fas fa-broom"></i><span>حذف فیلتر</span></button>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+            
+            
+            
+            
+{#              <div class="col-md-6 col-lg-12">#}
+{#                <div class="product-sidebar">#}
+{#                  <div class="product-sidebar-title">#}
+{#                    <h6>فیلتر بر اساس برچسب</h6>#}
+{#                  </div>#}
+{#                  <div class="product-sidebar-content">#}
+{#                    <div class="product-sidebar-search">#}
+{#                      <input type="text" placeholder="جستجو" />#}
+{#                    </div>#}
+{#                    <ul class="product-sidebar-list widget">#}
+{#                      <li>#}
+{#                        <input type="checkbox" id="tag1" /><label for="tag1"><span>خودرو شخصی</span><span>(13)</span></label>#}
+{#                      </li>#}
+{#                    </ul><button class="product-filter-btn"><i class="fas fa-broom"></i><span>حذف فیلتر</span></button>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+            
+            
+            
+            
+{#              <div class="col-md-6 col-lg-12">#}
+{#                <div class="product-sidebar">#}
+{#                  <div class="product-sidebar-title">#}
+{#                    <h6>فیلتر بر اساس دسته بندی</h6>#}
+{#                  </div>#}
+{#                  <div class="product-sidebar-content">#}
+{#                    <div class="product-sidebar-search">#}
+{#                      <input type="text" placeholder="جستجو" />#}
+{#                    </div>#}
+{#                    <ul class="nasted-dropdown">#}
+{#                      <li>#}
+{#                        <div class="nasted-menu">#}
+{#                          <p>#}
+{#                            <span class="fas fa-tags"></span> الکترونیک#}
+{#                          </p><i class="fas fa-chevron-down"></i>#}
+{#                        </div>#}
+{#                        <ul class="nasted-menu-list">#}
+{#                          <li>#}
+{#                            <a href="#">نمایش آیتم (0)</a>#}
+{#                          </li>#}
+{#                          <li>#}
+{#                            <a href="#">نمایش آیتم (0)</a>#}
+{#                          </li>#}
+{#                          <li>#}
+{#                            <a href="#">نمایش آیتم (0)</a>#}
+{#                          </li>#}
+{#                        </ul>#}
+{#                      </li>#}
+{#                    </ul><button class="product-filter-btn"><i class="fas fa-broom"></i><span>حذف فیلتر</span></button>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+            
+            
+            
+            
+            
+            </div>
+          </div>
+          <div class="col-lg-9">
+            <div class="row">
+                
+                
+                
+                
+                
+                {% for item in items %}
+              <div class="col-sm-6 col-md-4 col-lg-4 card-grid">
+                <div class="product-card">
+                  <div class="product-head">
+                    <div class="product-img" style="background:url({{ item.images.first.image.url }}) no-repeat center; background-size:cover;">
+{#                      <i class="cross-badge fas fa-bolt"></i>#}
+                        <span class="flat-badge rent">{{ item.type }}</span><ul class="product-meta">
+                        <li>
+                          <i class="fas fa-eye"></i><p>264</p>
+                        </li>
+                        <li>
+                          <i class="fas fa-mouse"></i><p>134</p>
+                        </li>
+                        <li>
+                          <i class="fas fa-star"></i><p>4.5/7</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="product-info">
+                    <div class="product-tag">
+                      <i class="fas fa-tags"></i><ol class="breadcrumb">
+{#                        <li class="breadcrumb-item">#}
+{#                          <a href="#">ویژگی</a>#}
+{#                        </li>#}
+                        <li class="breadcrumb-item active" aria-current="page">{{ item.category }}</li>
+                      </ol>
+                    </div>
+                    <div class="product-title">
+                                          <h5><a href="{% url 'items:detail' item.code %}"> کد : {{ item.code }}</a></h5><ul class="product-location">
+
+                        <li>
+                          <i class="fas fa-map-marker-alt"></i><p>داها، اورترا</p>
+                        </li>
+                        <li>
+                          <i class="fas fa-clock"></i><p>30 دقیقه قبل</p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="product-details">
+                      <div class="product-price">
+                        <h5>{{ item.total_price }} تومان</h5><span>/ توافقی</span>
+                      </div>
+                      <ul class="product-widget">
+                        <li>
+                          <button class="tooltip"><i class="far fa-heart"></i><span class="tooltext top">نشانک</span></button>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+                
+                
+                
+                
+                
+                
+                
+            </div>
+              
+              
+              
+            <div class="row">
+              <div class="col-lg-12">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#"><i class="fas fa-long-arrow-alt-left"></i></a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link active" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                  </li>
+                  <li class="page-item">...</li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">67</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="#"><i class="fas fa-long-arrow-alt-right"></i></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+              
+              
+              
+              
+              
+              
+              
+              
+          </div>
+        </div>
+      </div>
+    </section>
+    
+   
+    {% else %}
+    
+    
+        <section class="single-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="single-content">
+              <h2>موردی یافت نشد!</h2><ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">صفحه اصلی</a>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+{% endif %}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/custom/price-range.js' %}"></script>
+    <script src="{% static 'js/custom/main.js' %}"></script>
+{% endblock %}

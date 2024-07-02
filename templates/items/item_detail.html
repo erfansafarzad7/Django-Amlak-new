@@ -1,0 +1,553 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %} Item List {% endblock %}
+
+{% block style %}
+    
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}" />
+    <link rel="stylesheet" href="{% static 'cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/jquery-ui.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/slick.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom/rightbar-details.css' %}" />
+    
+{% endblock %}
+
+
+{% block content %}
+
+
+    
+    
+    
+    
+    
+    
+    
+    <section class="single-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="single-content">
+              <h2>جزئیات فایل</h2><ol class="breadcrumb">
+{#                <li class="breadcrumb-item">#}
+{#                  <a href="index.html">صفحه اصلی</a>#}
+{#                </li>#}
+{#                <li class="breadcrumb-item">#}
+{#                  <a href="rightbar-list.html">لیست نوار چپ</a>#}
+{#                </li>#}
+{#                <li class="breadcrumb-item active" aria-current="page">جزئیات فایل</li>#}
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section class="ad-details-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="ad-details-card">
+              <div class="ad-details-breadcrumb">
+                <ol class="breadcrumb">
+                  <li>
+                    <span class="flat-badge sale"> {{ item.type }}</span>
+                  </li>
+{#                  <li class="breadcrumb-item">#}
+{#                    <a href="#">ویژگی</a>#}
+{#                  </li>#}
+                  <li class="breadcrumb-item active" aria-current="page">{{ item.category }}</li>
+                </ol>
+              </div>
+              <div class="ad-details-heading">
+                <h2><a href="#">کد : {{ item.code }}</a></h2>
+              </div>
+              <ul class="ad-details-meta">
+{#                <li>#}
+{#                  <a href="#">#}
+{#                    <i class="fas fa-eye"></i><p>#}
+{#                      پیش نمایش <span>(134)</span>#}
+{#                    </p>#}
+{#                  </a>#}
+{#                </li>#}
+              </ul>
+              <div class="ad-details-slider slider-arrow">
+                  {% for image in item.images.all %}
+                    <div>
+                      <img src="{{image.image.url}}" alt="details" />
+                    </div>
+                  {% endfor %}        
+              </div>
+              <div class="ad-thumb-slider">
+                  {% for image in item.images.all %}
+                    <div>
+                      <img src="{{image.image.url}}" alt="details" />
+                    </div>
+                  {% endfor %} 
+              </div>
+              <div class="ad-details-action">
+                <ul>
+                  <li>
+                    <button type="button"><i class="fas fa-heart"></i><span>نشانک</span></button>
+                  </li>
+                  <li>
+                    <button type="button"><i class="fas fa-exclamation-triangle"></i><span>گزارش</span></button>
+                  </li>
+                  <li>
+                    <button type="button"><i class="fas fa-share-alt"></i><span>اشتراک</span></button>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          
+            <div class="ad-details-card">
+              <div class="ad-details-title">
+                <h5>مشخصات</h5>
+              </div>
+              <div class="ad-details-specific">
+                <ul>
+                    
+                  <li>
+                    <h6>کد :</h6><p>{{item.code}}</p>
+                  </li>
+                  <li>
+                    <h6>قیمت:</h6><p>{{item.total_price}} تومان</p>
+                  </li>
+                    {% if item.rent_price %}
+                      <li>
+                        <h6>قیمت اجاره:</h6><p>{{item.rent_price}} تومان</p>
+                      </li>
+                    {% endif %}
+                  <li>
+                    <h6>متراژ:</h6><p>{{item.area}}</p>
+                  </li>
+{#                  <li>#}
+{#                    <h6>موقعیت:</h6>{{ item.city }}</p>#}
+{#                  </li>#}
+                  <li>
+                    <h6>دسته بندی:</h6><p>{{item.category}}</p>
+                  </li>
+{#                  <li>#}
+{#                    <h6>منتشر شده:</h6><p>{{item.created}}</p>#}
+{#                  </li>#}
+                    {%for option in item.options.all %}
+                      <li>
+                        <h6>{{option.key}}</h6>
+                      </li>
+                    {%endfor%}
+                  
+                </ul>
+              </div>
+            </div>
+          
+          
+          {% if item.address %}
+            <div class="ad-details-card">
+              <div class="ad-details-title">
+                <h5>آدرس</h5>
+              </div>
+              <div class="ad-details-descrip">
+                <p>
+                    {{ item.address }}
+                </p>
+              </div>
+            </div>
+          {% endif %}
+          
+          {% if item.description %}
+            <div class="ad-details-card">
+              <div class="ad-details-title">
+                <h5>توضیحات</h5>
+              </div>
+              <div class="ad-details-descrip">
+                <p>
+                    {{ item.description }}
+                </p>
+              </div>
+            </div>
+          {% endif %}
+          
+          
+          
+            <div class="ad-details-card">
+              <div class="ad-details-title">
+                <h5>نظر (2)</h5>
+              </div>
+              <div class="ad-details-review">
+                <ul class="review-list">
+                  <li class="review-item">
+                    <div class="review-author">
+                      <div class="review-avatar">
+                        <a href="#"><img src="{% static 'images/avatar/02.jpg' %}" alt="review" /></a>
+                      </div>
+                      <div class="review-meta">
+                        <h6><a href="#">کاربر 1</a>- <span>خرداد 1403</span></h6><ul>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star"></i>
+                          </li>
+                          <li>
+                            <h5>- برای کیفیت محصول</h5>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="review-content">
+                      <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت.</p>
+                    </div>
+                  </li>
+                  <li class="review-item">
+                    <div class="review-author">
+                      <div class="review-avatar">
+                        <a href="#"><img src="{% static 'images/avatar/03.jpg' %}" alt="review" /></a>
+                      </div>
+                      <div class="review-meta">
+                        <h6><a href="#">کاربر 2</a>- <span>اسفند 1402</span></h6><ul>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <i class="fas fa-star active"></i>
+                          </li>
+                          <li>
+                            <h5>- برای سیستم تحویل</h5>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="review-content">
+                      <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت.</p>
+                    </div>
+                  </li>
+                </ul>
+                <form class="ad-review-form">
+                  <div class="star-rating">
+                    <input type="radio" name="rating" id="star-1" /><label for="star-1"></label><input type="radio" name="rating" id="star-2" /><label for="star-2"></label><input type="radio" name="rating" id="star-3" /><label for="star-3"></label><input type="radio" name="rating" id="star-4" /><label for="star-4"></label><input type="radio" name="rating" id="star-5" /><label for="star-5"></label>
+                  </div>
+                  <div class="ad-review-form-grid">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="موضوع" />
+                    </div>
+{#                    <div class="form-group">#}
+{#                      <input type="email" class="form-control" placeholder="ایمیل" />#}
+{#                    </div>#}
+{#                    <div class="form-group">#}
+{#                      <select class="form-control custom-select">#}
+{#                        <option selected>مشکل</option>#}
+{#                        <option value="1">سیستم تحویل</option>#}
+{#                        <option value="3">مراحل پرداخت</option>#}
+{#                      </select>#}
+{#                    </div>#}
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" placeholder="متن..."></textarea>
+                  </div><button class="btn btn-inline"><i class="fas fa-tint"></i><span>نظر خود را ارسال کنید</span></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        
+        
+        
+          <div class="col-lg-4">
+            <div class="ad-details-price">
+              <h5>23000 تومان</h5><span>/ توافقی</span>
+            </div>
+              <button class="ad-details-number"><i class="fas fa-phone-alt"></i><span> شماره تماس : 09123456789</span></button>
+              
+              
+              
+              
+{#              <div class="ad-details-card">#}
+{#              <div class="ad-details-title">#}
+{#                <h5>اطلاعات نویسنده</h5>#}
+{#              </div>#}
+{#              <div class="ad-details-profile">#}
+{#                <div class="author-img">#}
+{#                  <a href="#"><img src="images/avatar/01.jpg" alt="avatar" /><span class="author-status"></span></a>#}
+{#                </div>#}
+{#                <div class="author-intro">#}
+{#                  <h4><a href="#">جکسون هندرسون</a></h4><h5>فروشنده جدید</h5><p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. .</p>#}
+{#                </div>#}
+{#                <ul class="author-widget">#}
+{#                  <li>#}
+{#                    <a href="#"><i class="fas fa-phone-alt"></i></a>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <a href="#"><i class="fas fa-envelope"></i></a>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <a href="#"><i class="fas fa-heart"></i></a>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <a href="#"><i class="fas fa-eye"></i></a>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <a href="#"><i class="fas fa-share-alt"></i></a>#}
+{#                  </li>#}
+{#                </ul>#}
+{#                <ul class="author-list">#}
+{#                  <li>#}
+{#                    <h6>مجموع تبلیغ</h6><p>134</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>مجموع رتبه</h6><p>78</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>نشان</h6><p>56</p>#}
+{#                  </li>#}
+{#                </ul>#}
+{#                <div class="author-details">#}
+{#                  <h6>عضو شده: بهمن 1399</h6><h6>آدرس: جاکارتا، آرژانتین</h6>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+{#            #}
+{#              #}
+{#              #}
+{#              <div class="ad-details-card">#}
+{#              <div class="ad-details-title">#}
+{#                <h5>ساعات کاری</h5>#}
+{#              </div>#}
+{#              <div class="ad-details-opening">#}
+{#                <ul>#}
+{#                  <li>#}
+{#                    <h6>شنبه</h6><p>09:00 صبح - 05:00 بعد ظهر</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>یکشنبه</h6><p>09:00 صبح - 05:00 بعد ظهر</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>دوشنبه</h6><p>09:00 صبح - 05:00 بعد ظهر</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>سه شنبه</h6><p>09:00 صبح - 05:00 بعد ظهر</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>چهارشنبه</h6><p>09:00 صبح - 05:00 بعد ظهر</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>پنجشنبه</h6><p>09:00 صبح - 05:00 بعد ظهر</p>#}
+{#                  </li>#}
+{#                  <li>#}
+{#                    <h6>جمعه</h6><p>بسته</p>#}
+{#                  </li>#}
+{#                </ul>#}
+{#              </div>#}
+{#            </div>#}
+              
+              
+              
+              
+              
+              
+            <div class="ad-details-card">
+              <div class="ad-details-title">
+                <h5>موقعیت</h5>
+              </div>
+              <div class="ad-details-location">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7915.525673176609!2d46.32542404246615!3d38.06389198146334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDAzJzUzLjgiTiA0NsKwMTknMzkuNCJF!5e0!3m2!1sen!2s!4v1545664085241"></iframe>
+              </div>
+            </div>
+              
+              
+              
+            <div class="ad-details-card">
+              <div class="ad-details-title">
+                <h5>نکات ایمنی</h5>
+              </div>
+              <div class="ad-details-safety">
+                <ul>
+                  <li>
+                    <i class="fas fa-dot-circle"></i><p>قبل از خرید مورد را بررسی کنید</p>
+                  </li>
+                  <li>
+                    <i class="fas fa-dot-circle"></i><p>مراقب پیشنهادهای غیرواقعی باشید</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+              
+{#            <div class="ad-details-card">#}
+{#              <div class="ad-details-title">#}
+{#                <h5>تبلیغات ویژه</h5>#}
+{#              </div>#}
+{#              <div class="ad-details-feature slider-arrow">#}
+{#                <div class="feature-card">#}
+{#                  <div class="feature-img">#}
+{#                    <a href="#"><img src="images/product/10.jpg" alt="feature" /></a>#}
+{#                  </div>#}
+{#                  <div class="feature-badge">#}
+{#                    <p>ویژه</p>#}
+{#                  </div>#}
+{#                  <div class="feature-bookmark">#}
+{#                    <button type="button"><i class="fas fa-heart"></i></button>#}
+{#                  </div>#}
+{#                  <div class="feature-content">#}
+{#                    <ol class="breadcrumb">#}
+{#                      <li>#}
+{#                        <span class="feature-cate rent">اجاره</span>#}
+{#                      </li>#}
+{#                      <li class="breadcrumb-item">#}
+{#                        <a href="#">اتومبیل</a>#}
+{#                      </li>#}
+{#                      <li class="breadcrumb-item active" aria-current="page">خودرو شخصی</li>#}
+{#                    </ol>#}
+{#                    <div class="feature-title">#}
+{#                      <h3><a href="#">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است..</a></h3>#}
+{#                    </div>#}
+{#                    <ul class="feature-meta">#}
+{#                      <li>#}
+{#                        <span>120000 تومان <small>/ ماهانه</small></span>#}
+{#                      </li>#}
+{#                      <li>#}
+{#                        <i class="fas fa-clock"></i><span>56 دقیقه قبل</span>#}
+{#                      </li>#}
+{#                    </ul>#}
+{#                  </div>#}
+{#                </div>#}
+{#              </div>#}
+{#            </div>#}
+              
+              
+              
+              
+              
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <section class="related-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-center-heading">
+              <h2>فایل های <span>مرتبط</span></h2><p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. .</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="related-slider slider-arrow">
+                {% for r in related_items %}
+              <div class="product-card">
+                <div class="product-head">
+                  <div class="product-img" style="background:url({{ r.images.first.image.url }}) no-repeat center; background-size:cover;">
+                    <i class="cross-badge fas fa-bolt"></i><span class="flat-badge booking">رزرو</span><ul class="product-meta">
+                      <li>
+                        <i class="fas fa-eye"></i><p>264</p>
+                      </li>
+                      <li>
+                        <i class="fas fa-mouse"></i><p>134</p>
+                      </li>
+                      <li>
+                        <i class="fas fa-star"></i><p>4.5/7</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="product-info">
+                  <div class="product-tag">
+                    <i class="fas fa-tags"></i><ol class="breadcrumb">
+                      <li class="breadcrumb-item">
+                        <a href="#">لاکچری</a>
+                      </li>
+                      <li class="breadcrumb-item active" aria-current="page">{{ r.category }}</li>
+                    </ol>
+                  </div>
+                  <div class="product-title">
+                    <h5><a href="{% url 'items:detail' r.code %}"> کد : {{ r.code }}</a></h5><ul class="product-location">
+                      <li>
+                        <i class="fas fa-map-marker-alt"></i><p>داها، اورترا</p>
+                      </li>
+                      <li>
+                        <i class="fas fa-clock"></i><p>30 دقیقه قبل</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="product-details">
+                    <div class="product-price">
+                      <h5>{{ r.total_price }} تومان</h5>
+                    </div>
+                    <ul class="product-widget">
+                      <li>
+                        <a href="" class="tooltip"><i class="fas fa-compress"></i><span class="tooltext top">مقایسه کردن</span></a>
+                      </li>
+                      <li>
+                        <button class="tooltip"><i class="far fa-heart"></i><span class="tooltext top">نشانک</span></button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="center-50">
+              <a href="{% url 'items:all' %}?category={{ item.category }}" class="btn btn-inline"><i class="fas fa-eye"></i><span>مشاهده همه موارد مرتبط</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+{% endblock %}
+
+{% block scripts %} 
+
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/vendor/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/custom/price-range.js' %}"></script>
+    <script src="{% static 'js/vendor/slick.min.js' %}"></script>
+    <script src="{% static 'js/custom/slick.js' %}"></script>
+    <script src="{% static 'js/custom/main.js' %}"></script>
+
+{% endblock %}

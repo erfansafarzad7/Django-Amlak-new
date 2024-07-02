@@ -1,0 +1,266 @@
+{% load static %}
+
+
+
+
+
+
+    <header class="header-part">
+      <div class="container">
+        <div class="header-content">
+          <div class="header-left">
+            <ul class="header-widget">
+              <li>
+                <button type="button" class="header-menu"><i class="fas fa-align-left"></i></button>
+              </li>
+              <li>
+                <a href="#" class="header-logo"><img src="{% static 'images/logo.png' %}" alt="logo" /></a>
+              </li>
+              <li>
+                <a href="#" class="header-user"><i class="fas fa-user"></i><span>ورود</span></a>
+              </li>
+              <li>
+                <button type="button" class="header-src"><i class="fas fa-search"></i></button>
+              </li>
+            </ul>
+          </div>
+          <form class="header-search" action="{% url 'items:all' %}">
+
+              
+            <div class="header-main-search">
+              <button type="submit" class="header-search-btn"><i class="fas fa-search"></i></button><input type="text" name="code" class="form-control" placeholder="چیزی که دوست داری را جستجو کن ..." /><button type="button" class="header-option-btn tooltip"><i class="fas fa-sliders-h"></i><span class="tooltext left">گزینه فیلتر</span></button>
+            </div>
+            <div class="header-search-option">
+              <div class="row">
+                  
+                <div class="col-6">
+                  <div class="form-group">
+                    <input name="type" type="text" class="form-control" placeholder="نوع" />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <input name="address" type="text" class="form-control" placeholder="منطقه" />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <input name="category" type="text" class="form-control" placeholder="دسته بندی" />
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <input type="number" class="form-control" placeholder="قیمت" />
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-btn">
+                    <button type="submit" class="btn btn-inline"><i class="fas fa-search"></i><span>جستجو کنید</span></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="header-right">
+            <ul class="header-widget">
+              <li>
+                <button class="header-favourite"><i class="fas fa-heart"></i><sup>0</sup></button>
+              </li>
+              <li>
+                <button class="header-notify"><i class="fas fa-bell"></i><sup>0</sup></button>
+              </li>
+              <li>
+                <button class="header-message"><i class="fas fa-envelope"></i><sup>0</sup></button>
+              </li>
+            </ul><a href="ad-post.html" class="btn btn-inline"><i class="fas fa-plus-circle"></i><span>تبلیغ خود را ارسال کنید</span></a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+
+
+
+
+
+
+
+    <div class="sidebar-part">
+      <div class="sidebar-body">
+        <div class="sidebar-header">
+          <a href="index.html" class="sidebar-logo"><img src="images/logo.png" alt="logo" /></a><button class="sidebar-cross"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sidebar-content">
+          <div class="sidebar-profile">
+            <a href="#" class="sidebar-avatar"><img src="images/avatar/01.jpg" alt="avatar" /></a><h4><a href="#" class="sidebar-name">جکسون هندرسون</a></h4><a href="ad-post.html" class="btn btn-inline sidebar-btn"><i class="fas fa-plus-circle"></i><span>تبلیغ خود را ارسال کنید</span></a>
+          </div>
+          <div class="sidebar-menu">
+            <ul class="nav nav-tabs">
+              <li>
+                <a href="#main-menu" class="nav-link active" data-toggle="tab">منوی اصلی</a>
+              </li>
+              <li>
+                <a href="#author-menu" class="nav-link" data-toggle="tab">منوی نویسنده</a>
+              </li>
+            </ul>
+            <div class="tab-pane active" id="main-menu">
+              <ul class="navbar-list">
+                <li class="navbar-item">
+                  <a class="navbar-link" href="index.html">صفحه اصلی</a>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="#"><span>دسته بندی</span><i class="fas fa-plus"></i></a><ul class="dropdown-list">
+                    <li>
+                      <a class="dropdown-link" href="category-list.html">لیست دسته ها</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="category-details.html">جزئیات دسته</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="#"><span>لیست تبلیغات</span><i class="fas fa-plus"></i></a><ul class="dropdown-list">
+                    <li>
+                      <a class="dropdown-link" href="grid-list.html">لیست گرید</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="leftbar-list.html">لیست نوار راست</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="rightbar-list.html">لیست نوار چپ</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="#"><span>جزئیات تبلیغات</span><i class="fas fa-plus"></i></a><ul class="dropdown-list">
+                    <li>
+                      <a class="dropdown-link" href="grid-details.html">جزئیات گرید</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="leftbar-details.html">جزئیات نوار راست</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="rightbar-details.html">جزئیات نوار چپ</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="#"><span>صفحات</span><i class="fas fa-plus"></i></a><ul class="dropdown-list">
+                    <li>
+                      <a class="dropdown-link" href="about.html">درباره ما</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="compare.html">مقایسه تبلیغات</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="cities.html">آگهی توسط شهرها</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="price.html">قیمت گذاری</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="user-form.html">فرم کاربر</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="404.html">404</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="#"><span>وبلاگ</span><i class="fas fa-plus"></i></a><ul class="dropdown-list">
+                    <li>
+                      <a class="dropdown-link" href="blog-list.html">وبلاگ لیستی</a>
+                    </li>
+                    <li>
+                      <a class="dropdown-link" href="blog-details.html">جزئیات وبلاگ</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="navbar-item">
+                  <a class="navbar-link" href="contact.html">تماس با ما</a>
+                </li>
+              </ul>
+            </div>
+            <div class="tab-pane" id="author-menu">
+              <ul class="navbar-list">
+                <li class="navbar-item">
+                  <a class="navbar-link" href="dashboard.html">داشبورد</a>
+                </li>
+                <li class="navbar-item">
+                  <a class="navbar-link" href="profile.html">پروفایل</a>
+                </li>
+                <li class="navbar-item">
+                  <a class="navbar-link" href="ad-post.html">ارسال آگهی</a>
+                </li>
+                <li class="navbar-item">
+                  <a class="navbar-link" href="my-ads.html">تبلیغات من</a>
+                </li>
+                <li class="navbar-item">
+                  <a class="navbar-link" href="setting.html">تنظیمات</a>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="bookmark.html"><span>نشانک</span><span>0</span></a>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="#"><span>پیام</span><span>0</span></a>
+                </li>
+                <li class="navbar-item navbar-dropdown">
+                  <a class="navbar-link" href="#"><span>اعلانات</span><span>0</span></a>
+                </li>
+                <li class="navbar-item">
+                  <a class="navbar-link" href="user-form.html">خروج</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="sidebar-footer">
+            <p>
+              کلیه حقوق محفوظ است توسط <a href="#">کلاسیک ادز</a>
+            </p>
+            <p>
+              طراحی توسط <a href="https://www.rtl-theme.com/author/tn_plugin">جعفر عباسی خان</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="btmbar-part">
+      <div class="container">
+        <ul class="btmbar-widget">
+          <li>
+            <a href="user-form.html"><i class="fas fa-user"></i></a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-star"></i><sup>0</sup></a>
+          </li>
+          <li>
+            <a class="plus-btn" href="ad-post.html"><i class="fas fa-home"></i><span>پست خود را تبلیغ کنید</span></a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-bell"></i><sup>0</sup></a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-envelope"></i><sup>0</sup></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

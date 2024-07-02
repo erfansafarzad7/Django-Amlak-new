@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %} Login {% endblock %}
+
+{% block style %}
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/user-form.css' %}">
+{% endblock %}
+
+
+
+{% block content %}
+
+
+    
+    <section class="user-form-part">
+      <div class="user-form-banner">
+        <div class="user-form-content">
+          <a href="#"><img src="{% static 'images/logo.png' %}" alt="logo" /></a><h1>بهترین فایل ها را از ما بخواهید </h1><p>بزرگترین املاک استان گیلان</p>
+        </div>
+      </div>
+      <div class="user-form-category">
+        <div class="user-form-header">
+          <a href="#"><img src="{% static 'images/logo.png' %}" alt="logo" /></a><a href="#"></a>
+        </div>
+        <div class="user-form-category-btn">
+          <ul class="nav nav-tabs">
+          </ul>
+        </div>
+        <div class="tab-pane active" id="login-tab">
+          <div class="user-form-title">
+            <h2>خوش آمدید!</h2>
+          </div>
+            
+          <form method="post">
+            {% csrf_token %}
+              
+              
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                    
+                  <input type="text" name="username" class="form-control" placeholder="نام کاربری" autofocus autocapitalize="none" autocomplete="username" maxlength="40" required id="id_username" /><small class="form-alert"></small>
+                    
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group">
+                    
+                  <input type="password" class="form-control" id="pass" placeholder="رمز عبور" name="password" autocomplete="current-password" required id="id_password" /><button type="button" class="form-icon"><i class="eye fas fa-eye"></i></button><small class="form-alert">رمز ورود باید 6 حرف باشد</small>
+                    
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group text-right">
+                  <a href="{% url 'auth:forget_password' %}" class="form-forgot">فراموشی رمز عبور؟</a>
+                </div>
+              </div>
+                
+              <div class="col-12">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-inline"><i class="fas fa-unlock"></i><span>ورود</span></button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="user-form-direction">
+            <p>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/custom/main.js' %}"></script>
+{% endblock %}

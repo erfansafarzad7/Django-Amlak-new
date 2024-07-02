@@ -1,0 +1,470 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block title %} Item List {% endblock %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'fonts/flaticon/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom/category-list.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    
+    
+    
+
+    
+    
+    <section class="single-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="single-content">
+              <h2>لیست دسته بندی</h2><ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="#">صفحه اصلی</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">لیست دسته بندی</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    <section class="category-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/electronics.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>الکترونیک</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>تلویزیون</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>ژنراتور</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>ماشین لباسشویی</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>وضعیت هوا</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>اهن</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/gadgets.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>اسباب</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>کامپیوتر</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>موبایل</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>دوربین</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>هواپیمای بدون سرنشین</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>تلفن</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/furnitures.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>مبلمان</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/animals.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>حیوانات</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/fashions.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>مدلینگ</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>جین</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>زیر پوش</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>پیراهن</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کت</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>شورت</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/motorbikes.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>موتورسیکلت</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/properties.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>خواص</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/automobiles.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>اتومبیل</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/hospitality.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>طبیعت</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/agriculture.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>گیاه شناسی</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/bussiness.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>کسب و کار</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-3">
+            <div class="category-card">
+              <div class="category-head" style="background:url(images/category/education.jpg) no-repeat center; background-size:cover">
+                <a href="#"><h4>آموزشی</h4><p>(3678)</p></a>
+              </div>
+              <ul class="category-list">
+                <li>
+                  <a href="#"><h6>میز غذاخوری</h6><p>(34)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>صندلی</h6><p>(24)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>کاناپه</h6><p>(12)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز چای خوری</h6><p>(19)</p></a>
+                </li>
+                <li>
+                  <a href="#"><h6>میز آرایش</h6><p>(56)</p></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="center-20">
+              <a href="#" class="btn btn-inline"><i class="fas fa-eye"></i><span>نمایش همه دسته بندی</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    <section class="intro-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-center-heading">
+              <h2>آیا چیزی برای تبلیغ دارید؟</h2><p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. .</p><a href="ad-post.html" class="btn btn-outline"><i class="fas fa-plus-circle"></i><span>تبلیغ خود را ارسال کنید</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    <section class="price-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-center-heading">
+              <h2>بهترین برنامه های قیمت گذاری قابل اطمینان</h2><p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. .</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4">
+            <div class="price-card">
+              <div class="price-head">
+                <i class="flaticon-bicycle"></i><h3>رایگان</h3><h4>پلن اصلی</h4>
+              </div>
+              <ul class="price-list">
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li class="disable">
+                  <i class="fas fa-times"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li class="disable">
+                  <i class="fas fa-times"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+              </ul>
+              <div class="price-btn">
+                <a href="user-form.html" class="btn btn-inline"><i class="fas fa-sign-in-alt"></i><span>ثبت نام کرده</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="price-card price-active">
+              <div class="price-head">
+                <i class="flaticon-car-wash"></i><h3>23000 تومان</h3><h4>پلن استاندارد</h4>
+              </div>
+              <ul class="price-list">
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li class="disable">
+                  <i class="fas fa-times"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+              </ul>
+              <div class="price-btn">
+                <a href="user-form.html" class="btn btn-inline"><i class="fas fa-sign-in-alt"></i><span>ثبت نام کرده</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <div class="price-card">
+              <div class="price-head">
+                <i class="flaticon-airplane"></i><h3>49000 تومان</h3><h4>پلن اورجینال</h4>
+              </div>
+              <ul class="price-list">
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+                <li>
+                  <i class="fas fa-plus"></i><p>دسترسی به ویژگی های محدود</p>
+                </li>
+              </ul>
+              <div class="price-btn">
+                <a href="user-form.html" class="btn btn-inline"><i class="fas fa-sign-in-alt"></i><span>ثبت نام کرده</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    
+    
+    
+    
+    
+{% endblock %}
+
+{% block scripts %} 
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/vendor/popper.min.js' %}"></script>
+    <script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/custom/main.js' %}"></script>
+{% endblock %}
